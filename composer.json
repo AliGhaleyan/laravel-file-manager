@@ -1,0 +1,31 @@
+{
+    "name": "serjik/laravel-file-manger",
+    "description": "Upload file and download it :)",
+    "type": "library",
+    "require": {
+        "php": "^7.2",
+        "laravel/framework": "^6.2"
+    },
+    "keywords": [
+        "file",
+        "file manager",
+        "php file manager",
+        "laravel file manager",
+        "laravel"
+    ],
+    "homepage": "https://github.com/AliGhaleyan/laravel-file-manager",
+    "authors": [
+        {
+            "name": "AliGhaleyan",
+            "email": "alighalehban1379@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Serjik\\FileManager\\": "src/"
+        },
+        "files": [
+            "src/helper.php"
+        ]
+    }
+}
