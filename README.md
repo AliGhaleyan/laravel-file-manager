@@ -2,7 +2,7 @@
 
 ### Installation:
 ```
-composer require serjik/laravel-file-manger
+composer require serjik/laravel-file-manager
 ```
 
 You must add the service provider to `config/app.php`
