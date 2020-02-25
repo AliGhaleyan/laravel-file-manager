@@ -1,5 +1,5 @@
 {
-    "name": "serjik/laravel-file-manger",
+    "name": "serjik/laravel-file-manager",
     "description": "Upload file and download it :)",
     "type": "library",
     "require": {
