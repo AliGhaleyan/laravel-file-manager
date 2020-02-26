@@ -1,5 +1,5 @@
 {
-    "name": "ghaleyan/laravel-file-manager",
+    "name": "alighale/laravel-file-manager",
     "description": "Upload file and download it :)",
     "type": "library",
     "require": {
