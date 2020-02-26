@@ -2,7 +2,7 @@
 
 ### Installation:
 ```
-composer require ghaleyan/laravel-file-manager
+composer require alighale/laravel-file-manager
 ```
 
 You must add the service provider to `config/app.php`
