@@ -36,10 +36,17 @@ return [
 		  "secret" => "ashkdsjka#sdkdjfsj22188455$$#$%dsDFsdf",  
 		  "download_link_expire" => 160, // minutes  
 	  ],
-//	we add another types    
-//        "image"   => [  
-//            //  
-//        ],  
+      "image"   => [
+          "provider" => \AliGhale\FileManager\Types\Image::class,
+          "path"     => "images/upload/documents/",
+          "sizes"    => ["16", "24", "32", "64", "128", "320"],
+          "thumb"    => "320"
+      ],
+      "profile" => [
+          "parent"           => "image",
+          "path"             => "images/upload/profiles/",
+          "date_time_prefix" => false,
+      ],  
   ],  
 ];
 ```
@@ -56,7 +63,9 @@ return [
 |use_file_name_to_upload| `boolean`| if is `true` we use of the file original name else we generate a random name|
 |secret         |`string`      | secret key for generate download link and download file|
 |download_link_expire|`boolean`|generated download link expire time|
-
+|parent         |`string`      |parent type name          |
+|sizes          |`array`       |array of sizes and there are only for image type|
+|thumb          |`string` or `number`|size for thumb image and this is only for image type|
 
 
 ## Lets start to use:
@@ -78,6 +87,7 @@ $fileName = $upload->getName();
 | method                       		   |description              					 |
 |--------------------------------------|---------------------------------------------|
 | `useFileNameToUpload($status = true)`|if is `true` we use of the file original name else we generate a random name|
+|`type($type = null)`       		   |change type for upload if is null so use of default type|
 |`getFile($name = null)`       		   |get file by name and return a `\AliGhale\FileManager\Models\File`|
 | `setPath($path)`                     |set file upload path                	     |
 | `getUploadPath()`                    |get upload path                	        	 |
@@ -91,7 +101,7 @@ $fileName = $upload->getName();
 ### Examples:
 ```php
 $file = request()->file('filename');  
-$upload = File::setName('your specific name')  
+$upload = \AliGhale\FileManager\Facades\File::setName('your specific name')  
 	 ->isPrivate()  
 	 ->setFormat('png')  
 	 ->dateTimePrefix()  
@@ -110,4 +120,11 @@ $file->generateLink();
   
 // return response download  
 // $file->download();
+```
+
+### Change type:
+```php
+$file = request()->file('filename');  
+$upload = \AliGhale\FileManager\Facades\File::type("type_name") // type name in config file (filemanager.php)
+    ->upload($file);
 ```
