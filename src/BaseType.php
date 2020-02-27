@@ -91,10 +91,7 @@ abstract class BaseType
      */
     private function __construct()
     {
-        $type = config("filemanager.type");
-        $config = filemanager_config();
-        $this->setConfig($config);
-        $this->fetchProperties();
+        //
     }
 
 
@@ -118,7 +115,7 @@ abstract class BaseType
      * @param array|null $config
      * @return $this
      */
-    protected function fetchProperties(array $config = null)
+    public function fetchProperties(array $config = null)
     {
         if (is_null($config)) $config = $this->getConfig();
 
@@ -207,11 +204,12 @@ abstract class BaseType
     protected function createFileRow($name = null)
     {
         $file = File::create([
-            "name"    => $name ?? $this->getName() ?? $this->generateRandomName(),
-            "type"    => $this->getType(),
-            "path"    => $this->getFilePath(),
-            "format"  => $this->getFormat(),
-            "private" => $this->public ? false : true,
+            "name"      => $name ?? $this->getName() ?? $this->generateRandomName(),
+            "file_name" => $this->getFileName(),
+            "type"      => $this->getType(),
+            "base_path" => $this->getUploadPath(),
+            "format"    => $this->getFormat(),
+            "private"   => $this->public ? false : true,
         ]);
         $this->setFile($file);
         return $file;
@@ -348,6 +346,17 @@ abstract class BaseType
 
 
     /**
+     * get full path
+     *
+     * @return string
+     */
+    public function getFullPath()
+    {
+        return $this->getStorageFolder($this->getUploadPath());
+    }
+
+
+    /**
      * get upload location path
      * we append the prefix
      * if the dateTimePrefix property is true also append this {$year}/{$month}/{$day}/
@@ -396,6 +405,19 @@ abstract class BaseType
     public function getPrefix()
     {
         return $this->prefix;
+    }
+
+
+    /**
+     * get set prefix
+     *
+     * @param $prefix
+     * @return string
+     */
+    public function setPrefix($prefix)
+    {
+        $this->prefix = $prefix;
+        return $this;
     }
 
 
@@ -501,7 +523,7 @@ abstract class BaseType
      * @param array $parameters
      * @return string
      */
-    public function getFilePath($parameters = [])
+    public function getFilePath()
     {
         return $this->getUploadPath() . $this->getFileName();
     }

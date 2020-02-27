@@ -4,7 +4,8 @@
     "type": "library",
     "require": {
         "php": "^7.2",
-        "laravel/framework": "^6.2"
+        "laravel/framework": "^6.2",
+        "intervention/image": "^2.5"
     },
     "keywords": [
         "file",

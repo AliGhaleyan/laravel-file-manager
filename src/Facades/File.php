@@ -14,7 +14,7 @@ use AliGhale\FileManager\BaseType;
  * @package AliGhale\FileManager\Facades
  *
  * @method static BaseType useFileNameToUpload($status = true)
- * @method static upload($file)
+ * @method static BaseType upload($file)
  * @method static \AliGhale\FileManager\Models\File getFile($name = null)
  * @method static BaseType setFile(File $file)
  * @method static BaseType setConfig(array $config)
@@ -26,6 +26,7 @@ use AliGhale\FileManager\BaseType;
  * @method static getUploadPath()
  * @method static BaseType dateTimePrefix($value = true)
  * @method static getPrefix()
+ * @method static BaseType setPrefix($prefix)
  * @method static getStorageFolder($src)
  * @method static BaseType setName(string $name)
  * @method static getName()
@@ -35,6 +36,8 @@ use AliGhale\FileManager\BaseType;
  * @method static BaseType isPublic()
  * @method static getFilePath($parameters = [])
  * @method static getFileName()
+ * @method static BaseType fetchProperties(array $config = null)
+ * @method static BaseType type($type = null)
  */
 class File extends Facade
 {

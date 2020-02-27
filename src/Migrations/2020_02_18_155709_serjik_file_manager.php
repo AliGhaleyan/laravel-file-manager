@@ -17,7 +17,8 @@ class SerjikFileManager extends Migration
         Schema::create('files', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->unique();
-            $table->text('path');
+            $table->string('file_name')->unique();
+            $table->text('base_path');
             $table->tinyInteger('private')->default(0);
             $table->string("type")->default("default");
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));

@@ -33,10 +33,10 @@ class FileManagerServiceProvider extends ServiceProvider
 
     public function registerMigrations()
     {
-        $this->loadMigrationsFrom(__DIR__ . '/Migrations');
         $this->publishes([
-            __DIR__ . '/Migrations/' => database_path('migrations')
+            realpath(__DIR__ . '/Migrations') => database_path('migrations')
         ], 'migrations');
+        $this->loadMigrationsFrom(realpath(__DIR__ . '/Migrations'));
     }
 
     protected function registerRoutes()

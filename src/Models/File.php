@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Hash;
  *
  * @property $id
  * @property $name
- * @property $path
+ * @property $file_name
+ * @property $base_path
  * @property $private
  * @property $isPrivate
  * @property $isPublic
@@ -30,7 +31,8 @@ class File extends Model
     protected $fillable = [
         "id",
         "name",
-        "path",
+        "file_name",
+        "base_path",
         "private",
         "type",
         "created_at",
@@ -45,6 +47,17 @@ class File extends Model
     public function getIsPrivateAttribute()
     {
         return $this->private ? true : false;
+    }
+    
+
+    /**
+     * is private this file
+     *
+     * @return bool
+     */
+    public function getPathAttribute()
+    {
+        return $this->base_path . $this->file_name;
     }
 
 
@@ -75,7 +88,7 @@ class File extends Model
         }
 
         if (isset($config['download_link_expire'])) {
-            $expireTime = (int) $config['download_link_expire'];
+            $expireTime = (int)$config['download_link_expire'];
         }
 
         /** @var int $expireTime */

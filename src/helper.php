@@ -17,10 +17,13 @@ if (!function_exists("filemanager_config")) {
      * @param null $name
      * @return array|bool|\Illuminate\Config\Repository|mixed
      */
-    function filemanager_config($name = null)
+    function filemanager_config($type = "default", $name = null)
     {
-        $type = config("filemanager.type");
         $config = config("filemanager.types.{$type}");
+        if (isset($config["parent"])) {
+            $config = array_replace(config("filemanager.types.{$config['parent']}") ?? [],
+                $config);
+        }
         $default = config("filemanager.types.default");
         $config = array_replace(is_array($default) ? $default : [], is_array($config) ? $config : []);
 

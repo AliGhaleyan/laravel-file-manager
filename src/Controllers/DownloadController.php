@@ -21,26 +21,32 @@ class DownloadController
      * @return BinaryFileResponse
      * @throws InternalErrorException
      */
-    public function download($id)
+    public function download($file)
     {
         /** @var File $file */
         $file = File::query()
-            ->findOrFail($id);
+            ->where("id", $file)
+            ->orWhere("name", $file)
+            ->firstOrFail();
 
         $config = filemanager_config();
 
-        $secret = "";
-        if ($config['secret']) {
-            $secret = $config['secret'];
-        }
-
-        $hash = $secret . $file->id . request()->ip() . request('t');
-
-        if ((Carbon::createFromTimestamp(request('t')) > Carbon::now()) &&
-            Hash::check($hash, request('mac'))) {
+        if ($file->isPublic) {
             return $file->download();
         } else {
-            throw new InternalErrorException("link not valid");
+            $secret = "";
+            if ($config['secret']) {
+                $secret = $config['secret'];
+            }
+
+            $hash = $secret . $file->id . request()->ip() . request('t');
+
+            if ((Carbon::createFromTimestamp(request('t')) > Carbon::now()) &&
+                Hash::check($hash, request('mac'))) {
+                return $file->download();
+            } else {
+                throw new InternalErrorException("link not valid");
+            }
         }
     }
 }
