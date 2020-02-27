@@ -3,19 +3,19 @@
  * Created by SERJIK
  */
 
-namespace Serjik\FileManager\src\Facades;
+namespace AliGhale\FileManager\Facades;
 
 
 use Illuminate\Support\Facades\Facade;
-use Serjik\FileManager\BaseType;
+use AliGhale\FileManager\BaseType;
 
 /**
  * Class File
- * @package Serjik\FileManager\src\Facades
+ * @package AliGhale\FileManager\Facades
  *
  * @method static BaseType useFileNameToUpload($status = true)
  * @method static upload($file)
- * @method static \Serjik\FileManager\src\Models\File getFile($name = null)
+ * @method static \AliGhale\FileManager\Models\File getFile($name = null)
  * @method static BaseType setFile(File $file)
  * @method static BaseType setConfig(array $config)
  * @method static getConfig($name = null)
@@ -40,6 +40,6 @@ class File extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return \Serjik\FileManager\src\File::class;
+        return \AliGhale\FileManager\File::class;
     }
 }

@@ -3,9 +3,9 @@
  * Created by SERJIK
  */
 
-namespace Serjik\FileManager\src;
+namespace AliGhale\FileManager;
 
-use Serjik\FileManager\BaseType;
+use AliGhale\FileManager\BaseType;
 
 class File
 {

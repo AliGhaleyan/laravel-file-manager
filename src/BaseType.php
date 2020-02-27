@@ -3,18 +3,18 @@
  * Created by SERJIK
  */
 
-namespace Serjik\FileManager;
+namespace AliGhale\FileManager;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-use Serjik\FileManager\src\Models\File;
+use AliGhale\FileManager\Models\File;
 use Symfony\Component\CssSelector\Exception\InternalErrorException;
 
 /**
  * Class BaseType
- * @package Serjik\FileManager
+ * @package AliGhale\FileManager
  */
 abstract class BaseType
 {

@@ -3,12 +3,12 @@
  * Created by SERJIK
  */
 
-namespace Serjik\FileManager\src\Controllers;
+namespace AliGhale\FileManager\Controllers;
 
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
-use Serjik\FileManager\src\Models\File;
+use AliGhale\FileManager\Models\File;
 use Symfony\Component\CssSelector\Exception\InternalErrorException;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 

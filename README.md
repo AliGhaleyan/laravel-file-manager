@@ -2,14 +2,14 @@
 
 ### Installation:
 ```
-composer require serjik/laravel-file-manger
+composer require alighale/laravel-file-manger
 ```
 
 You must add the service provider to `config/app.php`
 ``` php
 'providers' => [
 	 // for laravel 5.8 and below
-	 \Serjik\FileManager\FileManagerServiceProvider::class,
+	 \AliGhale\FileManager\FileManagerServiceProvider::class,
 ];
 ```
 
@@ -28,7 +28,7 @@ return [
   
   "types" => [  
 	  "default" => [  
-		  "provider" => \Serjik\FileManager\Types\File::class,  
+		  "provider" => \AliGhale\FileManager\Types\File::class,  
 		  "path" => "default_files/test/",  
 		  "private" => false,  
 		  "date_time_prefix" => true,  
@@ -49,7 +49,7 @@ return [
 
 | name          | type         | description               |
 |---------------|--------------|---------------------------|
-| provider      | `string (class name)`| provider class name, must be extended of `Serjik\FileManager\BaseType`                           |
+| provider      | `string (class name)`| provider class name, must be extended of `AliGhale\FileManager\BaseType`                           |
 |path           | `string`     | file upload path          |
 |private        | `boolean`    | is private or no if is `true` so upload file in storage folder else if is `false` so upload file in public folder |
 |date_time_prefix|`boolean`    | if is `true` so upload file with `/{year}/{month}/{day}` prefix|
@@ -78,7 +78,7 @@ $fileName = $upload->getName();
 | method                       		   |description              					 |
 |--------------------------------------|---------------------------------------------|
 | `useFileNameToUpload($status = true)`|if is `true` we use of the file original name else we generate a random name|
-|`getFile($name = null)`       		   |get file by name and return a `\Serjik\FileManager\Models\File`|
+|`getFile($name = null)`       		   |get file by name and return a `\AliGhale\FileManager\Models\File`|
 | `setPath($path)`                     |set file upload path                	     |
 | `getUploadPath()`                    |get upload path                	        	 |
 | `dateTimePrefix($value = true)`      |if is `true` so upload file with `/{year}/{month}/{day}` prefix|

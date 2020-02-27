@@ -5,7 +5,7 @@ return [
 
     "types" => [
         "default" => [
-            "provider" => \Serjik\FileManager\src\Types\File::class,
+            "provider" => \AliGhale\FileManager\Types\File::class,
             "path"     => "default_files/test/",
             "private"  => false,
             "date_time_prefix" => true,

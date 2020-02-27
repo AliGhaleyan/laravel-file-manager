@@ -3,7 +3,7 @@
  * Created by SERJIK
  */
 
-namespace Serjik\FileManager\src\Models;
+namespace AliGhale\FileManager\Models;
 
 
 use Carbon\Carbon;
@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Hash;
 
 /**
  * Class File
- * @package Serjik\FileManager\src\Modelsid
+ * @package AliGhale\FileManager\Modelsid
  *
  * @property $id
  * @property $name

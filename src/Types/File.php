@@ -3,9 +3,9 @@
  * Created by SERJIK
  */
 
-namespace Serjik\FileManager\src\Types;
+namespace AliGhale\FileManager\Types;
 
-use Serjik\FileManager\BaseType;
+use AliGhale\FileManager\BaseType;
 
 class File extends BaseType
 {

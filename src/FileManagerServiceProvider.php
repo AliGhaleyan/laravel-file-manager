@@ -3,7 +3,7 @@
  * Created by SERJIK
  */
 
-namespace Serjik\FileManager\src;
+namespace AliGhale\FileManager;
 
 
 use Illuminate\Support\Facades\Route;
@@ -42,7 +42,7 @@ class FileManagerServiceProvider extends ServiceProvider
     protected function registerRoutes()
     {
         Route::prefix('/api/filemanager')
-            ->namespace('Serjik\FileManager\src\Controllers')
+            ->namespace('AliGhale\FileManager\Controllers')
             ->group(__DIR__ . "/Routes/api.php");
     }
 }

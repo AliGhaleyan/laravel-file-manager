@@ -1,5 +1,5 @@
 {
-    "name": "serjik/laravel-file-manger",
+    "name": "alighale/laravel-file-manger",
     "description": "Upload file and download it :)",
     "type": "library",
     "require": {
@@ -22,7 +22,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Serjik\\FileManager\\": "src/"
+            "AliGhale\\FileManager\\": "src/"
         },
         "files": [
             "src/helper.php"
