@@ -89,23 +89,9 @@ abstract class BaseType
      *
      * private construct for singleton
      */
-    private function __construct()
+    public function __construct()
     {
         //
-    }
-
-
-    /**
-     * get new instance of this
-     *
-     * @return static
-     */
-    public static function getInstance()
-    {
-        if (self::$instance == null)
-            self::$instance = new static();
-
-        return self::$instance;
     }
 
 
@@ -173,7 +159,7 @@ abstract class BaseType
      * and if not set these when set
      * then return handle method
      *
-     * @param \Illuminate\Http\File $file
+     * @param $file
      * @return mixed
      */
     public function upload($file)

@@ -24,7 +24,7 @@ class File
 
         /** @var BaseType $providerClass */
         $providerClass = $config['provider'];
-        $providerClass = $providerClass::getInstance();
+        $providerClass = new $providerClass;
         $providerClass->setType($type)
             ->setConfig($config)
             ->fetchProperties();
