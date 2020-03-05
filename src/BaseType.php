@@ -218,7 +218,7 @@ abstract class BaseType
 
         return File::query()
             ->where("name", $name)
-            ->firstOrFail();
+            ->first();
     }
 
 
@@ -239,9 +239,13 @@ abstract class BaseType
     {
         /** @var File $file */
         $file = $this->getFile($filename);
-        $flag = $this->handleDelete($file);
-        $file->delete();
-        return $flag;
+
+        if ($file) {
+            $flag = $this->handleDelete($file);
+            $file->delete();
+        }
+
+        return $flag ?? true;
     }
 
 

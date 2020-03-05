@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\File as FileFacade;
 class Image extends BaseType
 {
     protected $sizes = null;
+
     protected $thumb = null;
 
 
@@ -62,8 +63,23 @@ class Image extends BaseType
             FileFacade::delete($sizePath);
         }
 
-        FileFacade::delete($file->base_path . "thumb/" . $file->file_name);
-        FileFacade::delete($file->base_path . "original/" . $file->file_name);
+        $thumbSize = $file->base_path . "thumb/" . $file->file_name;
+        $originalSize = $file->base_path . "original/" . $file->file_name;
+
+        if ($file->private) {
+            $thumbSize = storage_path($thumbSize);
+        } else {
+            $thumbSize = public_path($thumbSize);
+        }
+
+        if ($file->private) {
+            $originalSize = storage_path($originalSize);
+        } else {
+            $originalSize = public_path($originalSize);
+        }
+
+        FileFacade::delete($thumbSize);
+        FileFacade::delete($originalSize);
 
         return true;
     }
@@ -135,6 +151,7 @@ class Image extends BaseType
     {
         return $this->sizes;
     }
+
 
     /**
      * set sizes
