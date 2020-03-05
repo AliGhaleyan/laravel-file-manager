@@ -6,6 +6,8 @@
 namespace AliGhale\FileManager\Types;
 
 use AliGhale\FileManager\BaseType;
+use AliGhale\FileManager\Models\File;
+use Illuminate\Support\Facades\File as FileFacade;
 
 class Image extends BaseType
 {
@@ -28,6 +30,42 @@ class Image extends BaseType
         $this->resize($originalPath . $this->getFileName(), $path, $this->getFileName());
 
         return $this;
+    }
+
+
+    protected function handleDelete(File $file)
+    {
+        if (is_null($this->getSizes())) {
+            if ($sizes = $this->getConfig("sizes"))
+                $this->setSizes($sizes);
+            else
+                $this->setSizes(["16", "24", "32", "64", "128"]);
+        }
+
+        if (is_null($this->getThumbSize())) {
+            if (!$thumb = $this->getConfig("thumb"))
+                $this->setThumbSize($thumb);
+            else
+                $this->setThumbSize("128");
+        }
+
+        $sizes = $this->getSizes();
+        foreach ($sizes as $size) {
+            $sizePath = $file->base_path . "{$size}/";
+            $sizePath = $sizePath . $file->file_name;
+            if ($file->private) {
+                $sizePath = storage_path($sizePath);
+            } else {
+                $sizePath = public_path($sizePath);
+            }
+
+            FileFacade::delete($sizePath);
+        }
+
+        FileFacade::delete($file->base_path . "thumb/" . $file->file_name);
+        FileFacade::delete($file->base_path . "original/" . $file->file_name);
+
+        return true;
     }
 
 

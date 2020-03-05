@@ -235,6 +235,16 @@ abstract class BaseType
     }
 
 
+    public function delete($filename = null)
+    {
+        /** @var File $file */
+        $file = $this->getFile($filename);
+        $flag = $this->handleDelete($file);
+        $file->delete();
+        return $flag;
+    }
+
+
     /**
      * handling upload file
      *
@@ -242,6 +252,15 @@ abstract class BaseType
      * @return BaseType
      */
     abstract protected function handle($file);
+
+
+    /**
+     * handle delete file
+     *
+     * @param File $file
+     * @return mixed
+     */
+    abstract protected function handleDelete(File $file);
 
 
     /**********     Getters & Setters    **********/

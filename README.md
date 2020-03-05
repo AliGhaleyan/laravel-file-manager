@@ -90,6 +90,7 @@ $fileName = $upload->getName();
 |`type($type = null)`       		   |change type for upload if is null so use of default type|
 |`getFile($name = null)`       		   |get file by name and return a `\AliGhale\FileManager\Models\File`|
 | `setPath($path)`                     |set file upload path                	     |
+| `delete($filename)`                  |delete the file help by this provider type   |
 | `getUploadPath()`                    |get upload path                	        	 |
 | `dateTimePrefix($value = true)`      |if is `true` so upload file with `/{year}/{month}/{day}` prefix|
 | `setName(string $name)`              |set file name                	        				 |

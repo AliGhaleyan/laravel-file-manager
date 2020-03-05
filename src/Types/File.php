@@ -6,6 +6,8 @@
 namespace AliGhale\FileManager\Types;
 
 use AliGhale\FileManager\BaseType;
+use AliGhale\FileManager\Models\File as FileModel;
+use Illuminate\Support\Facades\File as FileFacade;
 
 class File extends BaseType
 {
@@ -20,5 +22,18 @@ class File extends BaseType
         }
 
         return $this;
+    }
+
+
+    protected function handleDelete(FileModel $file)
+    {
+        $path = $file->base_path . $file->file_name;
+        if ($file->private) {
+            $path = storage_path($path);
+        } else {
+            $path = public_path($path);
+        }
+
+        return FileFacade::delete($path);
     }
 }

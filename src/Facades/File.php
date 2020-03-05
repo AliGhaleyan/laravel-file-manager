@@ -38,6 +38,7 @@ use AliGhale\FileManager\BaseType;
  * @method static getFileName()
  * @method static BaseType fetchProperties(array $config = null)
  * @method static BaseType type($type = null)
+ * @method static boolean delete($filename = null)
  */
 class File extends Facade
 {
